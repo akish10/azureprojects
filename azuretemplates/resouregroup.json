@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceGroupName": {
+      "type": "string",
+      "metadata": { "description": "name of resource group to be created." },
+      "defaultValue": "testtemplate"
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "Azure region where the resource will be created."
+      },
+      "allowedValues": ["southafrica-north", "eastus", "westus"],
+      "defaultValue": "southafrica-north"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2019-04-01",
+      "name": "[parameters('resourceGroupName')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "Environment": "Development",
+        "Owner": "azureuser"
+      }
+    }
+  ]
+}
